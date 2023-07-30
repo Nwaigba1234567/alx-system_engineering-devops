@@ -1,0 +1,14 @@
+
+https://imgur.com/NywmBov
+
+- we added load balancer to optimize resource utilization, increase efficiency, and ensure high availability and reliability of applications or services.
+The load balancer assigns connection to each server on the queue, if the last server on the queue is reached then it will start over from the beginning.
+
+- our load balancer has an Active-Active setup to help it avoid problem if one of the servers fail
+
+-Primary node or master node, serves a critical role in managing the database and handling client read and write operations
+
+- The SPOF ( single point of failure) on the web infrastracture resides on the Load balances, since we have only one Load balancer where failure of it will
+ result on failure of the whole web infrastructure.
+
+- security issue:  we have no firewall and we are using http  so the infrastructure is not secured, hackers can easily access the server.
