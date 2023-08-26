@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
-# This script displays numbers from 1 to 100, FizzBuzz when number is a multiple of 3 & 5,
-# Fizz when number is a multiply of 3 only and Buzz when number is a multiple of 5 only.
+# This script executes the FizzBuzz logic for numbers from 1 to 100.
+for i in {1..100}; do
+    fb3=$(( i % 3 ))
+    fb5=$(( i % 5 ))
 
-for ((i=1; i<=100; i++))
-do
-	if ((i%15 == 0))
-	then 
-		echo "FizzBuzz"
-	elif ((i%3 == 0))
-	then
-		echo "Fizz"
-	elif ((i%5 == 0))
-	then
-		echo "Buzz"
-	else
-		echo $i	
+    if [[ $fb3 == 0 && $fb5 == 0 ]]; then
+        echo "FizzBuzz"
+    elif [ "$fb3" == 0 ]; then
+        echo "Fizz"
+    elif [ "$fb5" == 0 ]; then
+        echo "Buzz"
+    else
+        echo "$i"
+    fi
+done
