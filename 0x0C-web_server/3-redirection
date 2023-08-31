@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# this script installs nginx as webserver on ubuntu machine
+
+# install nginx
+apt update -y
+apt install -y nginx
+
+# allow firewall connection on HTTP Port 80
+ufw allow 'Nginx HTTP'
+
+# create index.html to be used at root
+echo "Hello World!" > index.html
+
+# move the index.html to root folder
+mv index.html /var/www/html
+
+# append redirection after server_name line
+re_direction="\\\trewrite ^/redirect_me https://www.github.com/Nwaigba1234567 permanent;"
+sudo sed -i "/listen 80 default_server/a $re_direction" /etc/nginx/sites-available/default
+
+# restart nginx
+service nginx restart
+
