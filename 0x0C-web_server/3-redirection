@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this script installs nginx as webserver on ubuntu machine
+#This script installs nginx as webserver on ubuntu machine
 
 # install nginx
 apt update -y
