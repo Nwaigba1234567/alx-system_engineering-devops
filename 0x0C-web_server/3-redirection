@@ -15,9 +15,18 @@ echo "Hello World!" > index.html
 mv index.html /var/www/html
 
 # append redirection after server_name line
-re_direction="\\\trewrite ^/redirect_me https://www.github.com/Nwaigba1234567 permanent;"
-sudo sed -i "/listen 80 default_server/a $re_direction" /etc/nginx/sites-available/default
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index  index.html index.htm index.nginx-debian.html;
+
+    location /redirect_me {
+        return 301 https://www.github.com/Nwaigba66;
+    }
+    
+}" > /etc/nginx/sites-enabled/default
 
 # restart nginx
-service nginx restart
-
+sudo service nginx restart
